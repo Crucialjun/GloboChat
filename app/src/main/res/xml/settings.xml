@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="General"
+        app:iconSpaceReserved="false"
+        >
+        <EditTextPreference
+            android:key="@string/key_status"
+            android:title="@string/title_status"
+            android:defaultValue="Turn wounds into wisdom"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true"
+            android:dialogTitle="Update Status"
+
+            >
+
+        </EditTextPreference>
+        <SwitchPreference
+            app:iconSpaceReserved="false"
+            android:summary="@string/summary_auto_reply"
+            android:title="@string/title_auto_reply"
+            android:defaultValue="false"
+            android:key="@string/key_auto_reply">
+
+        </SwitchPreference>
+
+        <ListPreference
+            android:dependency="key_auto_reply"
+            android:dialogTitle="Select Time"
+            android:key="key_auto_reply_time"
+            android:title="Auto Reply Time"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true"
+            android:entries="@array/entries_auto_reply_time"
+            android:entryValues="@array/values_auto_reply_time"
+            >
+
+        </ListPreference>
+
+        <ListPreference
+            android:dependency="key_auto_reply"
+            android:dialogTitle="Select Message"
+            android:key="key_auto_reply_msg"
+            android:title="Auto Reply Message"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true"
+            android:entries="@array/pref_auto_reply_messages"
+            android:entryValues="@array/pref_auto_reply_messages"
+            >
+
+        </ListPreference>
+
+
+    </PreferenceCategory>
+
+
+
+</PreferenceScreen>
