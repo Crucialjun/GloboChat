@@ -46,6 +46,16 @@ class AccountSettingsFragment : PreferenceFragmentCompat() {
 
 
         prefScreen.addPreference(privacyCategory)
+        prefScreen.addPreference(securityCategory)
+
+        privacyCategory.addPreference(publicInfoPref)
+
+
+        securityCategory.addPreference(logoutPref)
+        securityCategory.addPreference(deleteAccPref)
+
+        preferenceScreen = prefScreen
+
 
 
 
