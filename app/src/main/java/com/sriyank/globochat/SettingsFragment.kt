@@ -11,6 +11,8 @@ import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import androidx.preference.SwitchPreference
+import androidx.preference.SwitchPreferenceCompat
 
 
 class SettingsFragment : PreferenceFragmentCompat() {
@@ -39,6 +41,16 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 Log.i("TAG", "onPreferenceChange: New Status is $newValue ")
 
                 true
+            }
+
+        val notificationPref = findPreference<SwitchPreferenceCompat>("key_new_msg_notif")
+        notificationPref?.summaryProvider =
+            Preference.SummaryProvider<SwitchPreferenceCompat> { switch ->
+                if(switch.isChecked){
+                    "Status On"
+                }else{
+                    "Status Off"
+                }
             }
     }
 

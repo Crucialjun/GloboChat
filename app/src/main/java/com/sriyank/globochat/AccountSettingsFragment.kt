@@ -47,7 +47,6 @@ class AccountSettingsFragment : PreferenceFragmentCompat() {
 
         prefScreen.addPreference(privacyCategory)
         prefScreen.addPreference(securityCategory)
-
         privacyCategory.addPreference(publicInfoPref)
 
 
