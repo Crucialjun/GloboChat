@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
+import androidx.preference.PreferenceDataStore
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreference
@@ -18,6 +19,11 @@ import androidx.preference.SwitchPreferenceCompat
 class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.settings,rootKey)
+
+
+        val datastore = DataStore()
+
+        //preferenceManager.preferenceDataStore = datastore
 
         val accSettingsPref = findPreference<Preference>("key_account_settings")
 
@@ -52,6 +58,24 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     "Status Off"
                 }
             }
+
+        notificationPref?.preferenceDataStore = datastore
+    }
+
+    class DataStore : PreferenceDataStore(){
+        override fun getBoolean(key: String?, defValue: Boolean): Boolean {
+            if(key == "key_new_msg_notif"){
+                Log.i("DataStore", "getBoolean:executed for $key ")
+            }
+
+            return defValue
+        }
+
+        override fun putBoolean(key: String?, value: Boolean) {
+            if(key == "key_new_msg_notif"){
+                Log.i("DataStore", "putBoolean:executed for $key with value $value ")
+            }
+        }
     }
 
 
